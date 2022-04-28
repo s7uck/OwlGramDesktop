@@ -47,12 +47,12 @@
             <muxc:NavigationView Name="TopNav"
                                  PaneDisplayMode="Top"
                                  IsBackEnabled="False"
-                                 IsBackButtonVisible="Collapsed">
+                                 IsBackButtonVisible="Collapsed"
+                                 IsSettingsVisible="False">
                 <muxc:NavigationView.MenuItems>
                     <muxc:NavigationViewItem Icon="Home" Content="All chats"/>
                     <muxc:NavigationViewItem Icon="Phone" Content="Calls"/>
                     <muxc:NavigationViewItem Icon="Contact" Content="Contacts"/>
-                    <muxc:NavigationViewItemSeparator/>
                 </muxc:NavigationView.MenuItems>
             </muxc:NavigationView>
         </Grid>
