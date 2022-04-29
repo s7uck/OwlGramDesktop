@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OwlGram Desktop")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Fork of the OwlGram Telegram client for Windows")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("OwlGram Desktop")]
-[assembly: AssemblyCopyright("Copyright ©  2022")]
+[assembly: AssemblyCompany("OwlGram")]
+[assembly: AssemblyProduct("Desktop")]
+[assembly: AssemblyCopyright("Copyright © OwlGram 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
