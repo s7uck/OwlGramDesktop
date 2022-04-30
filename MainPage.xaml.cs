@@ -30,6 +30,8 @@ namespace OwlDesktop
     {
         public ApplicationView View { get; private set; }
         public CoreApplicationView CoreView { get; private set; }
+        private Navbar NavMenu { get; set; }
+        public List<(string Tag, Type Page)> NavbarPages { get; private set; }
 
         public MainPage()
         {
@@ -38,6 +40,19 @@ namespace OwlDesktop
             View = ApplicationView.GetForCurrentView();
             CoreView = CoreApplication.GetCurrentView();
             ExpandView(TitleBar);
+
+            NavbarPages = new List<(string Tag, Type Page)>
+            {
+                ("allChats", typeof(AllChats)),
+                ("calls", typeof(AllCalls)),
+                ("contacts", typeof(Contacts)),
+                ("archived", typeof(ArchivedChats)),
+            };
+
+            NavMenu = new Navbar(
+                Menu, NavbarPageContent, NavbarPages,
+                HomePageNav, typeof(SettingsPage)
+            );
         }
 
         internal void ExpandView(Grid titleBar = null)
@@ -45,78 +60,6 @@ namespace OwlDesktop
             CoreView.TitleBar.ExtendViewIntoTitleBar = true;
             if (titleBar != null)
                 Window.Current.SetTitleBar(titleBar);
-        }
-
-        private readonly List<(string Tag, Type Page)> NavbarPages = new List<(string Tag, Type Page)>
-        {
-            ("allChats", typeof(AllChats)),
-            ("calls", typeof(AllCalls)),
-            ("contacts", typeof(Contacts)),
-            ("archived", typeof(ArchivedChats)),
-        };
-
-        private void LoadNavbar(object sender, RoutedEventArgs e)
-        {
-            NavbarPageContent.Navigated += PageNavigated;
-
-            Navbar.SelectedItem = HomePageNav;
-        }
-
-        private void NavbarNavigate(string tag, NavigationTransitionInfo transitionInfo)
-        {
-            Type NavbarPage = null;
-            if (tag == "settings") NavbarPage = typeof(SettingsPage);
-            else
-            {
-                var item = NavbarPages.FirstOrDefault(i => i.Tag.Equals(tag));
-                NavbarPage = item.Page;
-            }
-            var currentPage = NavbarPageContent.CurrentSourcePageType;
-            if (!(NavbarPage is null) && !Type.Equals(currentPage, NavbarPage))
-                NavbarPageContent.Navigate(NavbarPage, null, transitionInfo);
-        }
-
-        private void PageNavigated(object sender, NavigationEventArgs e)
-        {
-            Navbar.IsBackEnabled = NavbarPageContent.CanGoBack;
-
-            if (NavbarPageContent.SourcePageType == typeof(SettingsPage))
-                Navbar.SelectedItem = Navbar.SettingsItem;
-            else if (NavbarPageContent.SourcePageType != null)
-            {
-                var item = NavbarPages.FirstOrDefault(i => i.Page == e.SourcePageType);
-
-                Navbar.SelectedItem = Navbar.MenuItems
-                    .OfType<muxc.NavigationViewItem>()
-                    .First(n => n.Tag.Equals(item.Tag));
-            }
-        }
-
-        private void NavbarPageSelected(muxc.NavigationView sender, muxc.NavigationViewSelectionChangedEventArgs e)
-        {
-            if (e.IsSettingsSelected)
-                NavbarNavigate("settings", e.RecommendedNavigationTransitionInfo);
-            else if (e.SelectedItemContainer != null && e.SelectedItemContainer.Tag != null)
-            {
-                var tag = e.SelectedItemContainer.Tag.ToString();
-                NavbarNavigate(tag, e.RecommendedNavigationTransitionInfo);
-            }
-        }
-
-        private void NavigatingBack(muxc.NavigationView sender, muxc.NavigationViewBackRequestedEventArgs e)
-        {
-            TryNavigateBack();
-        }
-
-        private void TryNavigateBack()
-        {
-            if (!NavbarPageContent.CanGoBack)
-                return;
-
-            if (Navbar.IsPaneOpen && Navbar.DisplayMode != muxc.NavigationViewDisplayMode.Expanded)
-                return;
-
-            NavbarPageContent.GoBack();
         }
     }
 }

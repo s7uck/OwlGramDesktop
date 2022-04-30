@@ -6,9 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
-    mc:Ignorable="d"
-    d:DesignWidth="400"
-    d:DesignHeight="800">
+    mc:Ignorable="d">
 
     <StackPanel>
         <muxc:NavigationView Name="ChatsList"
@@ -21,32 +19,11 @@
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Icon="save" Content="Saved messages"/>
                 <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard ChatPicture="/Assets/LockscreenLogo.png"
-                                    ChatTitle="test"
-                                    PreviewText="test"/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard ChatPicture="/Assets/LockscreenLogo.png"
-                                    ChatTitle="test"
-                                    PreviewText="test"/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard ChatPicture="/Assets/LockscreenLogo.png"
-                                    ChatTitle="test"
-                                    PreviewText="test"/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard ChatPicture="/Assets/LockscreenLogo.png"
-                                    ChatTitle="test"
-                                    PreviewText="test"/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard ChatPicture="/Assets/LockscreenLogo.png"
-                                    ChatTitle="test"
-                                    PreviewText="test"/>
-                </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
         </muxc:NavigationView>
+
+        <ScrollViewer>
+            <Frame x:Name="ChatView" IsTabStop="True"/>
+        </ScrollViewer>
     </StackPanel>
 </Page>

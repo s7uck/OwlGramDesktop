@@ -49,25 +49,10 @@
             </AutoSuggestBox.QueryIcon>
         </AutoSuggestBox>
 
-        <!-- muxc:NavigationView Name="Navbar"
+        <muxc:NavigationView Name="Menu"
                              Grid.Column="0"
                              Grid.Row="1"
-                             PaneDisplayMode="Left"
-                             IsPaneOpen="True"
-                             IsPaneToggleButtonVisible="False"
-                             IsBackButtonVisible="Collapsed"
-                             IsSettingsVisible="False">
-            <muxc:NavigationView.MenuItems>
-            </muxc:NavigationView.MenuItems>
-        </muxc:NavigationView -->
-
-        <muxc:NavigationView Name="Navbar"
-                             Grid.Column="0"
-                             Grid.Row="1"
-                             PaneDisplayMode="LeftCompact"
-                             Loaded="LoadNavbar"
-                             SelectionChanged="NavbarPageSelected"
-                             BackRequested="NavigatingBack">
+                             PaneDisplayMode="LeftCompact">
             <muxc:NavigationView.PaneTitle>
                 OwlGram
             </muxc:NavigationView.PaneTitle>

@@ -12,6 +12,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using muxc = Microsoft.UI.Xaml.Controls;
+using OwlDesktop.Controls;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,9 +24,22 @@ namespace OwlDesktop.Views
     /// </summary>
     public sealed partial class AllChats : Page
     {
+        public Navbar NavList { get; set; }
+        public List<(string Tag, Type Page)> NavChats { get; set; }
+
         public AllChats()
         {
             this.InitializeComponent();
+
+            NavChats = new List<(string Tag, Type Page)>
+            {
+                ("saved", typeof(AllChats))
+            };
+
+            NavList = new Navbar(
+                ChatsList, ChatView,
+                NavChats
+            );
         }
     }
 }

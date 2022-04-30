@@ -11,7 +11,7 @@
     d:DesignHeight="800">
 
     <StackPanel>
-        <muxc:NavigationView Name="ChatsList"
+        <muxc:NavigationView Name="ArchivedChatsList"
                              VerticalAlignment="Stretch"
                              PaneDisplayMode="Left"
                              IsPaneOpen="True"
