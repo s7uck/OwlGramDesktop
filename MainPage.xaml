@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    xmlns:animation="using:Microsoft.UI.Xaml.Controls.AnimatedVisuals"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
@@ -20,44 +21,75 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Grid Name="TitleBar"
-                    Grid.ColumnSpan="2"
-                    Grid.Row="0"
-                    HorizontalAlignment="Stretch"
-                    VerticalAlignment="Center">
+        <Grid x:Name="TitleBar"
+              Grid.ColumnSpan="2"
+              Grid.Row="0"
+              HorizontalAlignment="Stretch"
+              VerticalAlignment="Center"
+              Background="Transparent">
             <TextBlock Name="AppName"
                        Margin="16,8"
                        Style="{ThemeResource CaptionTextBlockStyle}">
                 OwlGram Desktop
             </TextBlock>
-
-            <AutoSuggestBox Name="SearchBox"
-                            MinWidth="312"
-                            MaxWidth="456"
-                            Height="32"
-                            HorizontalAlignment="Center"
-                            QueryIcon="Find"
-                            PlaceholderText="Search"/>
         </Grid>
+
+        <AutoSuggestBox Name="SearchBox"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        MinWidth="260"
+                        MaxWidth="456"
+                        Height="32"
+                        HorizontalAlignment="Center"
+                        PlaceholderText="Search">
+            <AutoSuggestBox.QueryIcon>
+                <muxc:AnimatedIcon>
+                    <animation:AnimatedFindVisualSource/>
+                </muxc:AnimatedIcon>
+            </AutoSuggestBox.QueryIcon>
+        </AutoSuggestBox>
+
+        <!-- muxc:NavigationView Name="Navbar"
+                             Grid.Column="0"
+                             Grid.Row="1"
+                             PaneDisplayMode="Left"
+                             IsPaneOpen="True"
+                             IsPaneToggleButtonVisible="False"
+                             IsBackButtonVisible="Collapsed"
+                             IsSettingsVisible="False">
+            <muxc:NavigationView.MenuItems>
+            </muxc:NavigationView.MenuItems>
+        </muxc:NavigationView -->
 
         <muxc:NavigationView Name="Navbar"
                              Grid.Column="0"
                              Grid.Row="1"
                              PaneDisplayMode="LeftCompact"
-                             IsPaneOpen="True">
+                             Loaded="LoadNavbar"
+                             SelectionChanged="NavbarPageSelected"
+                             BackRequested="NavigatingBack">
             <muxc:NavigationView.PaneTitle>
                 OwlGram
             </muxc:NavigationView.PaneTitle>
             <muxc:NavigationView.MenuItems>
-                <muxc:NavigationViewItem Icon="Home" Content="All chats"/>
-                <muxc:NavigationViewItem Icon="Phone" Content="Calls"/>
-                <muxc:NavigationViewItem Icon="Contact" Content="Contacts"/>
-                <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem Icon="Save" Content="Saved messages" />
-                <muxc:NavigationViewItem Icon="Mute" Content="Archived chats" />
+                <muxc:NavigationViewItem Name="HomePageNav"
+                                         Tag="allChats"
+                                         Icon="Home" Content="All chats"/>
+                <muxc:NavigationViewItem Tag="calls"
+                                         Icon="Phone" Content="Calls"/>
+                <muxc:NavigationViewItem Tag="contacts"
+                                         Icon="Contact" Content="Contacts"/>
+                <muxc:NavigationViewItem Tag="archived"
+                                         Icon="GoToToday" Content="Archived chats" />
             </muxc:NavigationView.MenuItems>
             <muxc:NavigationView.FooterMenuItems>
-                <muxc:NavigationViewItem Icon="Add" Content="New chat"/>
+                <muxc:NavigationViewItem Icon="Add" Content="New chat">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Icon="Contact" Content="Contact"/>
+                        <muxc:NavigationViewItem Icon="People" Content="Group"/>
+                        <muxc:NavigationViewItem Icon="Volume" Content="Channel"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
                 <muxc:NavigationViewItemSeparator/>
                 <muxc:NavigationViewItem Icon="Account" Content="Account" IsExpanded="True">
                     <muxc:NavigationViewItem.MenuItems>
@@ -70,13 +102,16 @@
                     </muxc:NavigationViewItem.MenuItems>
                 </muxc:NavigationViewItem>
             </muxc:NavigationView.FooterMenuItems>
+
+            <ScrollViewer>
+                <Frame x:Name="NavbarPageContent" IsTabStop="True"/>
+            </ScrollViewer>
         </muxc:NavigationView>
 
-        <!-- ListView Name="ChatsList"
-                  Grid.Column="0"
-                  Grid.Row="1"
-                  CornerRadius="8">
+        <Grid Name="Body"
+              Grid.Column="1"
+              Grid.Row="1">
             
-        </ListView -->
+        </Grid>
     </Grid>
 </Page>

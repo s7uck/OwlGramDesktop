@@ -25,7 +25,10 @@ namespace OwlDesktop.Controls
             set { SetValue(ChatTitleProperty, value); }
         }
         public static readonly DependencyProperty ChatTitleProperty =
-            DependencyProperty.Register("Title", typeof(string), typeof(ChatCard), new PropertyMetadata(0));
+            DependencyProperty.Register(
+                "ChatTitle", typeof(string),
+                typeof(ChatCard), new PropertyMetadata("Chat")
+            );
 
         public string ChatPicture
         {
@@ -33,7 +36,10 @@ namespace OwlDesktop.Controls
             set { SetValue(ChatPictureProperty, value); }
         }
         public static readonly DependencyProperty ChatPictureProperty =
-            DependencyProperty.Register("Picture", typeof(string), typeof(ChatCard), new PropertyMetadata(0));
+            DependencyProperty.Register(
+                "ChatPicture", typeof(string),
+                typeof(ChatCard), new PropertyMetadata("/Assets/LockScreenLogo.png")
+            );
 
         public string PreviewText
         {
@@ -41,7 +47,10 @@ namespace OwlDesktop.Controls
             set { SetValue(PreviewTextProperty, value); }
         }
         public static readonly DependencyProperty PreviewTextProperty =
-            DependencyProperty.Register("PreviewText", typeof(string), typeof(ChatCard), new PropertyMetadata(0));
+            DependencyProperty.Register(
+                "PreviewText", typeof(string),
+                typeof(ChatCard), new PropertyMetadata("Text")
+            );
 
         public ChatCard()
         {

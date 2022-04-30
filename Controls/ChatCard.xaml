@@ -5,8 +5,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="100"
-    d:DesignWidth="300">
+    d:DesignWidth="512"
+    d:DesignHeight="100">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,22 +25,23 @@
                Margin="16"
                HorizontalAlignment="Center"
                VerticalAlignment="Center"
-               Source="{Binding ChatPicture}"/>
+               Source="/Assets/StoreLogo.png"/>
 
         <TextBlock Name="TitleText"
                    Grid.Column="1"
                    Grid.Row="0"
-                   Margin="8"
+                   Margin="4,0,4,0"
                    VerticalAlignment="Bottom"
-                   Style="{ThemeResource TitleTextBlockStyle}"
-                   Text="{Binding ChatTitle}"
-                   TextWrapping="NoWrap"/>
+                   Style="{ThemeResource NavigationViewItemHeaderTextStyle}"
+                   Text="{Binding ChatTitle, ElementName=Root, Mode=TwoWay}"
+                   TextWrapping="NoWrap">La tua competizione placeholder</TextBlock>
         <TextBlock Name="PreviewTextBlock"
                    Grid.Column="1"
                    Grid.Row="1"
-                   Margin="8"
+                   Margin="4,0,0,4"
                    VerticalAlignment="Top"
-                   Text="{Binding PreviewText}"
-                   MaxLines="2"/>
+                   Style="{ThemeResource CaptionTextBlockStyle}"
+                   Text="{Binding PreviewText, ElementName=Root, Mode=TwoWay}"
+                   MaxLines="2">Chat di esempio</TextBlock>
     </Grid>
 </UserControl>
