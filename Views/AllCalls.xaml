@@ -10,7 +10,12 @@
     d:DesignWidth="400"
     d:DesignHeight="800">
 
-    <StackPanel>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="256" Width=".5*" MaxWidth="512"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
         <muxc:NavigationView Name="CallsList"
                              VerticalAlignment="Stretch"
                              PaneDisplayMode="Left"
@@ -21,6 +26,10 @@
             <muxc:NavigationView.MenuItems>
                 
             </muxc:NavigationView.MenuItems>
+
+            <ScrollViewer>
+                <Frame x:Name="CurrentCallView" IsTabStop="True"/>
+            </ScrollViewer>
         </muxc:NavigationView>
-    </StackPanel>
+    </Grid>
 </Page>

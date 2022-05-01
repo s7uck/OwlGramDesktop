@@ -50,16 +50,17 @@ namespace OwlDesktop
             };
 
             NavMenu = new Navbar(
-                Menu, NavbarPageContent, NavbarPages,
+                Menu, MainContent, NavbarPages,
                 HomePageNav, typeof(SettingsPage)
             );
         }
 
-        internal void ExpandView(Grid titleBar = null)
+        private void ExpandView(Grid titleBar = null)
         {
             CoreView.TitleBar.ExtendViewIntoTitleBar = true;
             if (titleBar != null)
                 Window.Current.SetTitleBar(titleBar);
+            View.TitleBar.ButtonBackgroundColor = Colors.Transparent;
         }
     }
 }
