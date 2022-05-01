@@ -5,10 +5,66 @@
     xmlns:local="using:OwlDesktop.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        
+        <muxc:NavigationView Name="SettingsPages"
+                             VerticalAlignment="Stretch"
+                             PaneDisplayMode="Left"
+                             IsPaneOpen="True"
+                             IsPaneToggleButtonVisible="False"
+                             IsBackButtonVisible="Collapsed"
+                             IsSettingsVisible="False">
+            <muxc:NavigationView.MenuItems>
+                <muxc:NavigationViewItem/>
+                <muxc:NavigationViewItemSeparator/>
+                <muxc:NavigationViewItem Icon="Volume" Content="Notifications and Sounds">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Icon="Contact" Content="Private chats"/>
+                        <muxc:NavigationViewItem Icon="People" Content="Groups"/>
+                        <muxc:NavigationViewItem Icon="PostUpdate" Content="Channels"/>
+                        <muxc:NavigationViewItemSeparator/>
+                        <muxc:NavigationViewItem Icon="Message" Content="Native notifications"/>
+                        <muxc:NavigationViewItemSeparator/>
+                        <muxc:NavigationViewItem Icon="Priority" Content="Events"/>
+                        <muxc:NavigationViewItem Icon="Volume" Content="In–app sounds"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Icon="ReportHacked" Content="Privacy and Security">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Icon="View" Content="Privacy"/>
+                        <muxc:NavigationViewItemSeparator/>
+                        <muxc:NavigationViewItem Icon="Priority" Content="Security"/>
+                        <muxc:NavigationViewItem Icon="Link" Content="Two–step verification"/>
+                        <muxc:NavigationViewItem Icon="Globe" Content="Bots and websites"/>
+                        <muxc:NavigationViewItemSeparator/>
+                        <muxc:NavigationViewItem Icon="Cancel" Content="Delete my account"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Icon="Message" Content="Chat Settings">
+                    <muxc:NavigationViewItem.MenuItems>
+                        <muxc:NavigationViewItem Icon="Edit" Content="Appeareance"/>
+                        <muxc:NavigationViewItemSeparator/>
+                        <muxc:NavigationViewItem Icon="Message" Content="Messages"/>
+                        <muxc:NavigationViewItem Icon="List" Content="Side Menu"/>
+                        <muxc:NavigationViewItem Icon="Emoji" Content="Stickers and emoji"/>
+                    </muxc:NavigationViewItem.MenuItems>
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Icon="MoveToFolder" Content="Folders">
+                </muxc:NavigationViewItem>
+
+                <muxc:NavigationViewItem Icon="Setting" Content="Advanced">
+                </muxc:NavigationViewItem>
+            </muxc:NavigationView.MenuItems>
+        </muxc:NavigationView>
+
+        <ScrollViewer>
+            <Frame x:Name="SettingsView" IsTabStop="True"/>
+        </ScrollViewer>
     </Grid>
 </Page>

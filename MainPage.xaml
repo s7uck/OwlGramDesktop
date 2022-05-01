@@ -11,32 +11,25 @@
     Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition MinWidth="256" Width=".5*" MaxWidth="512"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="38"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid x:Name="TitleBar"
-              Grid.ColumnSpan="2"
               Grid.Row="0"
               HorizontalAlignment="Stretch"
               VerticalAlignment="Center"
               Background="Transparent">
             <TextBlock Name="AppName"
                        Margin="16,8"
-                       Style="{ThemeResource CaptionTextBlockStyle}">
+                       Style="{ThemeResource CaptionTextBlockStyle}"
+                       Visibility="Collapsed">
                 OwlGram Desktop
             </TextBlock>
         </Grid>
 
         <AutoSuggestBox Name="SearchBox"
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
                         MinWidth="260"
                         MaxWidth="456"
                         Height="32"
@@ -50,7 +43,6 @@
         </AutoSuggestBox>
 
         <muxc:NavigationView Name="Menu"
-                             Grid.Column="0"
                              Grid.Row="1"
                              PaneDisplayMode="LeftCompact">
             <muxc:NavigationView.PaneTitle>
@@ -67,6 +59,7 @@
                 <muxc:NavigationViewItem Tag="archived"
                                          Icon="GoToToday" Content="Archived chats" />
             </muxc:NavigationView.MenuItems>
+
             <muxc:NavigationView.FooterMenuItems>
                 <muxc:NavigationViewItem Icon="Add" Content="New chat">
                     <muxc:NavigationViewItem.MenuItems>
@@ -89,14 +82,8 @@
             </muxc:NavigationView.FooterMenuItems>
 
             <ScrollViewer>
-                <Frame x:Name="NavbarPageContent" IsTabStop="True"/>
+                <Frame x:Name="MainContent"/>
             </ScrollViewer>
         </muxc:NavigationView>
-
-        <Grid Name="Body"
-              Grid.Column="1"
-              Grid.Row="1">
-            
-        </Grid>
     </Grid>
 </Page>
