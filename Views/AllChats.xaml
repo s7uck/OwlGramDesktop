@@ -1,4 +1,4 @@
-﻿    <Page
+﻿<Page
     x:Class="OwlDesktop.Views.AllChats"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -8,36 +8,22 @@
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d">
 
-    <Grid>
+    <StackPanel>
         <muxc:NavigationView Name="ChatsList"
                              VerticalAlignment="Stretch"
-                             PaneDisplayMode="Auto"
+                             PaneDisplayMode="Left"
                              IsPaneOpen="True"
+                             IsPaneToggleButtonVisible="False"
                              IsBackButtonVisible="Collapsed"
-                             IsPaneToggleButtonVisible="True"
                              IsSettingsVisible="False">
             <muxc:NavigationView.MenuItems>
                 <muxc:NavigationViewItem Icon="save" Content="Saved messages"/>
                 <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItemHeader Content="Pinned"/>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard/>
-                </muxc:NavigationViewItem>
-                <muxc:NavigationViewItemSeparator/>
-                <muxc:NavigationViewItem>
-                    <local:ChatCard/>
-                </muxc:NavigationViewItem>
             </muxc:NavigationView.MenuItems>
         </muxc:NavigationView>
 
         <ScrollViewer>
-            <Frame x:Name="ChatView"/>
+            <Frame x:Name="ChatView" IsTabStop="True"/>
         </ScrollViewer>
-    </Grid>
+    </StackPanel>
 </Page>
