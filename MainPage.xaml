@@ -23,8 +23,7 @@
               Background="Transparent">
             <TextBlock Name="AppName"
                        Margin="16,8"
-                       Style="{ThemeResource CaptionTextBlockStyle}"
-                       Visibility="Collapsed">
+                       Style="{ThemeResource CaptionTextBlockStyle}">
                 OwlGram Desktop
             </TextBlock>
         </Grid>
